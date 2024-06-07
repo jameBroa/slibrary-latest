@@ -12,6 +12,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "types": ["react-star-rating-component"],
     "plugins": [
       {
         "name": "next"

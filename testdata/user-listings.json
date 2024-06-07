@@ -1,0 +1,52 @@
+[
+    {
+        "bookName": "Introduction to Quantum Mechanics",
+        "bookDescription": "A comprehensive guide to the principles of quantum mechanics with illustrative examples and exercises. This book covers wave functions, operators, and quantum states in detail. Ideal for students and enthusiasts of physics.",
+        "price": 25.99
+    },
+    {
+        "bookName": "Organic Chemistry: Structure and Function",
+        "bookDescription": "This textbook covers fundamental concepts of organic chemistry with a focus on structure and function. Each chapter includes real-world examples and detailed mechanisms. It is perfect for both beginners and advanced students.",
+        "price": 18.75
+    },
+    {
+        "bookName": "Calculus: Early Transcendentals",
+        "bookDescription": "Detailed explanations and problems covering the essentials of calculus, including limits, derivatives, and integrals. This book provides numerous practice problems to reinforce concepts. Suitable for high school and college students.",
+        "price": 30.50
+    },
+    {
+        "bookName": "Modern Physics for Scientists and Engineers",
+        "bookDescription": "An accessible introduction to modern physics, covering relativity, quantum mechanics, and statistical mechanics. The book integrates theoretical concepts with practical applications. It is an essential resource for physics students.",
+        "price": 22.40
+    },
+    {
+        "bookName": "Economics: Principles, Problems, and Policies",
+        "bookDescription": "A balanced approach to micro and macroeconomics, integrating real-world applications and data analysis. This textbook provides a thorough understanding of economic principles. Perfect for students and professionals alike.",
+        "price": 24.99
+    },
+    {
+        "bookName": "Introduction to Algorithms",
+        "bookDescription": "A widely-used textbook on algorithms, covering a broad range of algorithms in depth. Each algorithm is explained with step-by-step instructions and examples. Ideal for computer science students and professionals.",
+        "price": 32.00
+    },
+    {
+        "bookName": "Principles of Biochemistry",
+        "bookDescription": "An in-depth introduction to biochemistry, emphasizing the structure and function of biomolecules. This book includes detailed illustrations and pathways. Suitable for students and researchers in biochemistry.",
+        "price": 27.85
+    },
+    {
+        "bookName": "Sociology: A Global Perspective",
+        "bookDescription": "Explores the complexities of sociology from a global perspective, including contemporary issues and cultural diversity. This textbook provides a comprehensive overview of sociological theories. Ideal for sociology students and professionals.",
+        "price": 21.95
+    },
+    {
+        "bookName": "Fundamentals of Thermodynamics",
+        "bookDescription": "Covers the principles of thermodynamics with practical applications and problem-solving techniques. This book includes numerous real-world examples and exercises. Perfect for engineering and physical sciences students.",
+        "price": 29.75
+    },
+    {
+        "bookName": "Human Anatomy & Physiology",
+        "bookDescription": "Comprehensive coverage of human anatomy and physiology with detailed illustrations and clinical correlations. Each chapter is designed to enhance understanding of the human body. Ideal for medical and health science students.",
+        "price": 35.60
+    }
+]
