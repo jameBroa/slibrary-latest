@@ -27,39 +27,25 @@ export default function Dashboard() {
     const [gotListings, setGotListings] = useState(false)
     const listingCollectionReference = collection(firestore, "listings")
 
-
-    const writeToDatabase = async() => {
-        if(user){
-            console.log("writing to database")
-            const res = await addDoc(listingCollectionReference, {
-                user:user.uid,
-                bookName:bookName,
-                bookDesc:bookDesc,
-                price:'10.99'
-            })
-            console.log("Should've finished!")
-        }
-    }
-
-    // const readFromDatabase = async() => {
-    //     if(user) {
-    //         const q = query(listingCollectionReference, where("user", "==", user.uid))
-    //         const response = await getDocs(q)
-    //         console.log(response.docs[0].data())
-    //         setUserListings(response.docs)
-    //         setGotListings(true)
-    //     }
-    // }
-
-    // Retrieves users listings from Firebase
+    // Retrieves users listings from REST API
     useEffect(() => {
         if(user) {
             // Uncomment line below to test functionality through Firebase. 
             // readFromDatabase()
 
-            fetch(process.env.REST_URL)
+            const restURL = process.env.REST_URL +"/user?user=" + user.uid;
+            console.log("restURL: ", restURL);
+
+            if(typeof(restURL) === 'undefined'){
+                throw new Error("API Link is undefined");
+            }
+
+            fetch(restURL)
             .then(response => response.json())
-            .then(data => {setUserListings(data.listings), console.log(data.listings)})
+            .then(data => {
+                setUserListings(data), 
+                console.log(data)
+            })
             .catch(error => console.log(error));
         }
     }, [user])
@@ -118,39 +104,6 @@ export default function Dashboard() {
 
                 </div>
             </div>
-            
-
-            {/* User's listings */}
-            
-
-
-
-
-            {/* DATABASE TESTING VVVVV */}
-            {/* <div className="flex flex-row space-x-5">
-                <h1>Book name</h1>
-                <input onChange={(e) => {setBookName(e.target.value)}}></input>
-            </div>
-            <div className="flex flex-row space-x-5">
-                <h1>Book desc</h1>
-                <input onChange={(e) => {setBookDesc(e.target.value)}}></input>
-            </div>
-            <div className="flex flex-col space-y-10">
-                <button className="h-10 w-fit rounded-xl bg-red-400" onClick={writeToDatabase}>Write to Database</button>
-                <button className="h-10 w-fit rounded-xl bg-red-400" onClick={() => {console.log(userListings[0].data())}}>Retrieve from Database</button>
-                {gotListings && (
-                    userListings.map((listing) => {
-                        return(
-                            <div className="flex flex-col bg-red-400 w-32 h-32">
-                                <h1>{listing.data().bookName}</h1>
-                                <p>{listing.data().bookName}</p>
-                            </div>
-
-                        )
-                    })
-                )}
-            </div> */}
-            
         </div>
   )
 }

@@ -1,67 +1,112 @@
 'use client';
 import UserInput from "@/components/userinput";
+import { auth } from "@/config/firebase";
 import { colours } from "@/constants/colours";
 import { redirect } from "next/navigation";
 import { useRef, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { IoCameraOutline } from "react-icons/io5";
+import {v4 as uuidv4} from 'uuid';
 
 
 
 export default function Sell() {
 
     // State vars
-    const [images, setImages] = useState<File[]>([])
+    const [images, setImages] = useState<FileList>();
     const [image, setImage] = useState<File | null>(null);
     const [test, setTest] = useState<boolean>(false);
     const [listingName, setlistingName] = useState<string>();
     const [listingDesc, setListingDesc] = useState<string>();
     const [listingPrice, setListingPrice] = useState<string>();
 
+    // Firebase vars
+    const [user, loading] = useAuthState(auth);
+
     // Photo input
     const hiddenFileInput = useRef<HTMLInputElement | null>(null);
-    const handlePhotoChange = (e: React.FormEvent<HTMLInputElement>) => {
-        const img = e.currentTarget.files?.[0];
-        console.log(e.currentTarget.files?.length)
-
-        let currentImages = images;
-
-        e.currentTarget.files && Array.from(e.currentTarget.files).map((file) => {
-            currentImages?.push(file);
-        })
-
-
-        if(img){
-            setImage(img);
-            setImages(currentImages);
-            setTest(true);
+    const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if(e.target != null){
+            const selectedFiles = e.target.files;
+            console.log('selectedFiles: ', selectedFiles);
+            if(selectedFiles){
+                setImages(selectedFiles);
+                setImage(selectedFiles[0]);
+                setTest(true);
+            }
         }
+       
+
+
+
+
+
+
+        // const img = e.currentTarget.files?.[0];
+        // console.log(e.currentTarget.files?.length)
+
+        // let currentImages = images;
+
+        // e.currentTarget.files && Array.from(e.currentTarget.files).map((file) => {
+        //     currentImages?.push(file);
+        // })
+
+
+        // if(img){
+        //     setImage(img);
+        //     setImages(currentImages);
+        //     setTest(true);
+        // }
     }
 
-    // Submitting Logic
-    const handleSubmit = () => {
+    // Submitting Logic (maybe a separate file?)
+    const handleSubmit = async () => {
 
-        const UUID = require('uuid-int');
+        let uid = uuidv4();
+        uid = uid.split('-').join("");
+        const restURL = process.env.REST_URL + "/listing"
 
-        const generator = UUID(Math.random() * 512)
+        // Endpoint: S3
 
-        const uid = generator.uuid();
-        
+        const imageURLs: string[] = [];
 
+        try{
+            if(images){
+                for (let i = 0; i < images?.length; i++) {
+                    const img = images[i];
+                    const imgName = uuidv4().split("-").join("");
+                    const res = await fetch(restURL + "/slibrary-photos/" + imgName + ".png", {
+                        method:"PUT",
+                        body:img
+                    });
+                    if(res.ok){
+                        console.log("Successfully uploaded file!");
+                        console.log(res);
+                    } else {
+                        console.log("Error uploading file!");
+                    }
+                }
+            }
 
-        fetch("process.env.REST_URL", {
+        } catch (error){
+            console.log("Error uploading files!", error);
+        }
+
+        // Endpoint: DynamoDB
+        fetch(restURL, {
             method: "POST",
             body: JSON.stringify({
-                id:uid, //TODO: this id is manually inputted
+                id:uid, 
                 bookName:listingName,
                 bookDesc:listingDesc,
-                price:listingPrice
+                price:listingPrice,
+                user: user?.uid
             }),
             headers: {
                 "Content-type": "applications/json; charset=UTF-8"
             }
         }).then((response) => response.json()).then((json) => {console.log(json)});
-
-        redirect("/sell")
+        //redirect("/sell")
     }
 
     return(
