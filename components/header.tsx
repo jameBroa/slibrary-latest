@@ -8,7 +8,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { Dropdown } from 'flowbite-react';
 import {AnimatePresence, motion} from 'framer-motion'
 import ClickAwayListener from "react-click-away-listener";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 
 interface HeaderProps {
@@ -44,6 +44,11 @@ const Header: React.FC<HeaderProps> = ({alt=false}) => {
     }
 
     const [dropdown, setDropDown] = useState(false)
+    const router = useRouter()
+
+    const handleHomeClick = () => {
+        router.push("/")
+    }
 
 
 
@@ -54,7 +59,7 @@ const Header: React.FC<HeaderProps> = ({alt=false}) => {
                 
                 {alt && (
                     <div className="flex flex-row items-center lg:justify-evenly md:justify-start  md:gap-2 lg:gap-2 w-[95%]">
-                        <div className="flex flex-row lg:gap-4 md:gap-2">
+                        <div className="flex flex-row lg:gap-4 md:gap-2 cursor-pointer" onClick={handleHomeClick}>
                             <p className="lg:text-4xl md:text-2xl md:font-regular lg:font-semibold">S</p>
                             <p className="lg:text-4xl md:text-2xl md:font-regular lg:font-semibold">/</p>
                             <p className="lg:text-4xl md:text-2xl md:font-regular lg:font-semibold text-main">Library</p>

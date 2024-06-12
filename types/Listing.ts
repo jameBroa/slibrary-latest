@@ -3,4 +3,5 @@ export interface Listing {
     bookName: string;
     bookDesc: string;
     price: string;
+    user: string;
 }

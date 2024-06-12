@@ -82,6 +82,7 @@ export default function Sell() {
                     if(res.ok){
                         console.log("Successfully uploaded file!");
                         console.log(res);
+                        imageURLs.push(res.url);
                     } else {
                         console.log("Error uploading file!");
                     }
