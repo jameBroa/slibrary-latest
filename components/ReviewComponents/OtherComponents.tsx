@@ -1,22 +1,50 @@
+'use client'
+
+import { useEffect, useState } from "react"
 import OtherComponentListing from "./OtherComponentListing"
+import GetListingData from "../functions/GetListingData"
+import { Listing } from "@/types/Listing"
+import GetUserIdFromListingId from "../functions/GetUserIdFromListingId"
+import GetUserListings from "../functions/GetUserListings"
 
 interface OtherComponentsProps {
-    userId?: string
+    listingId: string
 }
 
-//for now we are letting userId be undefined but we don't want this behaviour
+// Takes in listing ID, and then we find the user and then all listings with that user
 
 
 // NOTE: this component is NOT a carousel and max should display 5 other listings
 
-const OtherComponents: React.FC<OtherComponentsProps> = ({userId}) => {
+const OtherComponents: React.FC<OtherComponentsProps> = ({listingId}) => {
+
+    const [otherListings, setOtherListings] = useState<Listing[]>();
+
+    useEffect(() => {
+        const getOtherListingsFromUser = async() => {
+            const user = await GetUserIdFromListingId(listingId);
+            let userListings = await GetUserListings(user);
+            userListings = userListings.filter((listing: Listing) => listing.id != listingId)
+            const userListingsSplit = userListings.slice(0, 5);
+            setOtherListings(userListingsSplit);
+        }
+        getOtherListingsFromUser();
+    }, [])
+
+
+
+
+
     return(
         <div className="w-full flex flex-row gap-4 justify-center mt-10 ">
-            <OtherComponentListing/>
-            <OtherComponentListing/>
-            <OtherComponentListing/>
-            <OtherComponentListing/>
-            <OtherComponentListing/>
+
+            {otherListings && 
+                otherListings.map((listing) => (
+                    <OtherComponentListing key={listing.id} listingInfo={listing}/>
+                ))
+
+                
+            }
         </div>
     )
 }

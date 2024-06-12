@@ -18,9 +18,9 @@ export default function listingInfo({
             <Header alt={true} /> 
             <LargeListingComponent listingID={params.listingid}/>
             <p className="text-4xl font-bold mt-20  ">Users Reviews</p>
-            <ReviewComponent/>
+            <ReviewComponent />
             <p className="text-4xl font-bold mt-20  ">Other Listings</p>
-            <OtherComponents/>
+            <OtherComponents listingId={params.listingid}/>
         </div>
     )
 }

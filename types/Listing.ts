@@ -1,5 +1,5 @@
 export interface Listing {
-    id: number;
+    id: string;
     bookName: string;
     bookDesc: string;
     price: string;

@@ -8,6 +8,10 @@ import 'react-circular-progressbar/dist/styles.css';
 import ReviewQualityComponent from "./ReviewQualityComponent";
 const ReviewComponent = () => {
 
+
+    //TODO: Need to update Listing Table in DynamoDB to include rating information
+
+
     //State vars
     const [star, setStar] = useState<number>(0);
 

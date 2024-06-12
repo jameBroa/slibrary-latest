@@ -1,4 +1,3 @@
-'use client'
 
 import { Listing } from "@/types/Listing";
 import React, { useEffect, useState } from "react"
@@ -6,13 +5,11 @@ import BagButton from "../BagButton";
 import OfferButton from "../OfferButton";
 
 interface OtherComponentListingProps{
-    listingId?: string
+    listingInfo: Listing
 }
 
 //for now we allow listingId to be undefined for UI design purposes
- const OtherComponentListing: React.FC<OtherComponentListingProps> = ({listingId}) => {
-
-    const [listing, setListing] = useState<Listing>();
+ const OtherComponentListing: React.FC<OtherComponentListingProps> = ({listingInfo}) => {
 
     return (
         <div className="w-[25vh]  bg-gray-100 px-8 py-4 flex flex-col gap-2 items-center rounded-lg">
@@ -20,8 +17,9 @@ interface OtherComponentListingProps{
                 <p>img</p>
             </div>
             <div className="w-[22vh] flex flex-col gap-4">
-                <p className="text-2xl font-semibold">Book Name</p>
-                <p className="text-xl font-semibold">£10.99</p>
+                
+                <p className="text-2xl font-semibold  h-16">{listingInfo.bookName}</p>
+                <p className="text-xl font-semibold">£{listingInfo.price}</p>
                 <div className="flex flex-col w-[22vh] items-center justify-center gap-2 ">
                     <BagButton width={52} textSize="md" />
                     <OfferButton width={52} textSize="md" />
