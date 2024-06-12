@@ -11,8 +11,6 @@ interface OtherComponentsProps {
     listingId: string
 }
 
-// Takes in listing ID, and then we find the user and then all listings with that user
-
 
 // NOTE: this component is NOT a carousel and max should display 5 other listings
 
@@ -31,19 +29,12 @@ const OtherComponents: React.FC<OtherComponentsProps> = ({listingId}) => {
         getOtherListingsFromUser();
     }, [])
 
-
-
-
-
     return(
         <div className="w-full flex flex-row gap-4 justify-center mt-10 ">
-
             {otherListings && 
                 otherListings.map((listing) => (
                     <OtherComponentListing key={listing.id} listingInfo={listing}/>
-                ))
-
-                
+                ))    
             }
         </div>
     )

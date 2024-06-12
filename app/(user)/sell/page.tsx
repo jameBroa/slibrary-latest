@@ -7,7 +7,7 @@ import Sell from "./Sell";
 
 
 export default function SellLanding() {
-
+   
     return(
         <div className="flex flex-col items-center">
             <Sell/>   

@@ -19,7 +19,7 @@ export default function listingInfo({
             <LargeListingComponent listingID={params.listingid}/>
             <p className="text-4xl font-bold mt-20  ">Users Reviews</p>
             <ReviewComponent />
-            <p className="text-4xl font-bold mt-20  ">Other Listings</p>
+            <p className="text-4xl font-bold mt-20  ">Other Listings by User</p>
             <OtherComponents listingId={params.listingid}/>
         </div>
     )
