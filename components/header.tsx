@@ -53,23 +53,23 @@ const Header: React.FC<HeaderProps> = ({alt=false}) => {
 
 
   return (
-    <div className="w-full h-[15vh] flex flex-row justify-center ">
+    <div className="w-full h-[15vh] flex flex-row justify-center md:gap-1  ">
 
-        <div className={`"lg:w-[80%] md:w-[90%] flex flex-row ${alt ? 'justify-center' : 'justify-end'} items-center lg:gap-8 md:gap-4"`}>
+        <div className={`lg:w-[90%] md:w-[90%] sm:w-[90%]  flex flex-row ${alt ? 'justify-center' : 'justify-end'} items-center lg:gap-8 md:gap-4 sm:gap-4`}>
                 
                 {alt && (
-                    <div className="flex flex-row items-center lg:justify-evenly md:justify-start  md:gap-2 lg:gap-2 w-[95%]">
+                    <div className="flex flex-row items-center lg:justify-evenly md:justify-start md:gap-4  lg:gap-4 sm:gap-4  ">
                         <div className="flex flex-row lg:gap-4 md:gap-2 cursor-pointer" onClick={handleHomeClick}>
-                            <p className="lg:text-4xl md:text-2xl md:font-regular lg:font-semibold">S</p>
-                            <p className="lg:text-4xl md:text-2xl md:font-regular lg:font-semibold">/</p>
-                            <p className="lg:text-4xl md:text-2xl md:font-regular lg:font-semibold text-main">Library</p>
+                            <p className="lg:text-4xl md:text-2xl sm:text-3xl md:font-regular lg:font-semibold">S</p>
+                            <p className="lg:text-4xl md:text-2xl sm:text-3xl md:font-regular lg:font-semibold">/</p>
+                            <p className="lg:text-4xl md:text-2xl sm:text-3xl md:font-regular lg:font-semibold text-main">Library</p>
                         </div>
-                        <input className="lg:w-[80%] md:w-[80%] h-14 lg:rounded-xl md:rounded-lg border-solid border-2 border-black focus:scale-105 transition-transform "/>
+                        <input className="lg:w-[60vw] md:w-[50vw] sm:w-[40vw] h-14 lg:rounded-xl md:rounded-lg sm:rounded-md border-solid border-2 border-black focus:scale-105 transition-transform "/>
                     </div>
                 )}
 
 
-                <a href="/">
+                <a href="/" className="">
                     <button className="text-xl  font-light active:scale-90 transition-transform">Home</button>
                 </a>
                 <a href="/sell">
@@ -90,7 +90,7 @@ const Header: React.FC<HeaderProps> = ({alt=false}) => {
                             <button onClick={() => {setDropDown(!dropdown)}} className="text-main 
                             focus:ring-2 focus:outline-none rounded-lg h-[100%]
                             flex flex-row items-center  ring-slate-100" type="button">
-                                <p className=" w-[100%] flex flex-row justify-start text-xl font-light text-decoration-line: underline">{user.displayName}</p>
+                                <p className=" w-[100%] flex flex-row justify-start text-xl font-light text-decoration-line: underline">Profile</p>
                                 
                             </button>
 

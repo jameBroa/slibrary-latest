@@ -22,7 +22,7 @@ const ReviewComponent = () => {
     }
 
     return (
-    <div className="w-full flex flex-col gap-4">
+    <div className="w-full flex flex-col gap-4 ">
         <div className="flex flex-row gap-12 w-full items-center mt-8 lg:h-36 justify-center  ">
 
             <div className="h-full flex flex-col gap-2 justify-center items-center  ">
@@ -50,8 +50,8 @@ const ReviewComponent = () => {
 
             
             
-            <div className="h-full  w-48 flex flex-col justify-evenly  ">
-                <CircularProgressbar className="h-[50%] font-semibold text-3xl" 
+            <div className="h-full  lg:w-48 md:w-32 sm:w-20 flex flex-col justify-evenly items-center ">
+                <CircularProgressbar className="h-[50%]  font-semibold text-3xl" 
                 value={63} 
                 text={`${63}%`}
                 styles={buildStyles({
@@ -59,7 +59,7 @@ const ReviewComponent = () => {
                     pathColor: `#28A6CB`
                 })}
                 />
-                <p className="text-center">{63}% of users recommend this seller</p>
+                <p className="text-center md:text-sm sm:text-xs">Reccommend rate</p>
             </div>
         </div>
 

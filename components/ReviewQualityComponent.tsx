@@ -9,7 +9,7 @@ interface ReviewQualityComponentProps {
 const ReviewQualityComponent: React.FC<ReviewQualityComponentProps> = ({rating, quality}) => {
     return(
         <div className="flex flex-col items-center gap-4">
-            <CircularProgressbar className="lg:h-24 rounded-none font-semibold text-3xl" 
+            <CircularProgressbar className="lg:h-24 md:h-24 sm:h-24 rounded-none font-semibold text-3xl" 
             value={Math.round(rating/5*100)} 
             text={`${rating}/5`}
             strokeWidth={18}

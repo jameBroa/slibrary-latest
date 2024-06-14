@@ -32,9 +32,9 @@ const LargeListingComponent:React.FC<LargeListingComponentProps> = ({listingID})
   }, [listingID])
 
   return (
-    <div className="flex flex-row  lg:w-[80%] h-[60vh]">
-      <div className="flex flex-row  lg:w-[40%]">
-        <div className="bg-gray-200 rounded-xl h-full w-[70%] flex flex-row justify-center items-center">
+    <div className="flex md:flex-row sm:flex-col  lg:w-[80%] md:w-[80%] sm:w-[100%] md:h-[60vh] sm:h-[95vh] sm:justify-center sm:items-center">
+      <div className="flex flex-row md:h-full sm:h-[80vh] lg:w-[40%] md:w-[80%] sm:w-[95%] ">
+        <div className="bg-gray-200 rounded-xl h-[100%] w-[70%] flex flex-row justify-center items-center">
           <p>img 1</p>
 
         </div>
@@ -50,16 +50,16 @@ const LargeListingComponent:React.FC<LargeListingComponentProps> = ({listingID})
           </div>
         </div>
       </div>
-      <div className="flex flex-col lg:w-[60%]">
+      <div className="flex flex-col lg:w-[60%] md:w-[40%] sm:w-[100%] ">
         {listing && (
-          <div className="w-[100%] h-[100%] flex flex-col justify-evenly p-10">
-            <p className="text-5xl font-medium">{listing.bookName}</p>
-            <p className="text-xl font-light">{listing.bookDesc}</p>
+          <div className="w-[100%] h-[100%] flex flex-col justify-evenly lg:p-10 md:p-6 sm:p-6">
+            <p className="lg:text-5xl md:text-3xl sm:text-3xl font-bold">{listing.bookName}</p>
+            <p className="lg:text-xl md:text-sm sm:text-md font-light">{listing.bookDesc}</p>
             <div className="flex flex-col gap-4">
-              <p className="text-2xl font-l gap-4ight">£{listing.price}</p>
+              <p className="lg:text-2xl md:text-lg sm:text-3xl font-light gap-4">£{listing.price}</p>
               <div className="flex flex-row gap-4">
-                <BagButton/>
-                <OfferButton/>
+                <BagButton width={20} textSize={'sm'}/>
+                <OfferButton width={20} textSize='sm'/>
               </div>
             </div>
           </div>

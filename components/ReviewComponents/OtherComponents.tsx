@@ -30,7 +30,7 @@ const OtherComponents: React.FC<OtherComponentsProps> = ({listingId}) => {
     }, [])
 
     return(
-        <div className="w-full flex flex-row gap-4 justify-center mt-10 ">
+        <div className="lg:w-full md:w-[80%] sm:w-[90%]  flex flex-row md:flex-wrap sm:flex-wrap gap-4 justify-center mt-10 ">
             {otherListings && 
                 otherListings.map((listing) => (
                     <OtherComponentListing key={listing.id} listingInfo={listing}/>

@@ -14,12 +14,12 @@ export default function listingInfo({
 }) {
 
     return (
-        <div className="flex flex-col items-center w-full  ">
+        <div className="flex flex-col items-center w-full">
             <Header alt={true} /> 
             <LargeListingComponent listingID={params.listingid}/>
-            <p className="text-4xl font-bold mt-20  ">Users Reviews</p>
+            <p className="text-4xl font-bold mt-10 ">Users Reviews</p>
             <ReviewComponent />
-            <p className="text-4xl font-bold mt-20  ">Other Listings by User</p>
+            <p className="text-4xl font-bold mt-10  ">Other Listings by User</p>
             <OtherComponents listingId={params.listingid}/>
         </div>
     )
